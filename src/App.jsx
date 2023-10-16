@@ -18,6 +18,7 @@ function App() {
         console.error("Error fetching weather data:", error);
       });
   }, [city]);
+  console.log("salom",weather);
 
   return (
     <div>
@@ -26,6 +27,9 @@ function App() {
           <h2>Weather in {city}</h2>
           <p>Temperature: {weather.main.temp - 273.15}°C</p>
           <p>Humidity: {weather.main.humidity}%</p>
+          <p>Wind speed : {weather.wind.speed} </p>
+          <p>Weather : {weather.weather[0].main}</p>
+          <p>Weather description : {weather.weather[0].description}</p>
           <button onClick={() => setWeather("")}>Nazad</button>
           {/* <p>{lat} {lon}</p> */}
           {/* Add more data as needed */}
@@ -34,7 +38,7 @@ function App() {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            console.log(e);
+            console.log(e.target.pogoda.type);
             setCity(e.target.pogoda.value);
           }}
         >
